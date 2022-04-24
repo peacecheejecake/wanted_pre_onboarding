@@ -73,10 +73,6 @@ function SliderLower({ currentValue, setCurrentValue }) {
     }
   }, [ref]);
 
-  // useEffect(() => {
-  //   window.addEventListener("unload", setIsDraggingCurruntCircle(false))
-  // })
-
   const quartileValues = [1, 25, 50, 75, 100];
 
   const syncWithCursor = (clientX) => {
