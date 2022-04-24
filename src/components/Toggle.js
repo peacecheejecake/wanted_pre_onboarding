@@ -7,13 +7,13 @@ const WIDTH = 400
 const HEIGHT = 38
 
 export default function Toggle({ items }) {
+  const width = WIDTH;
+  const height = HEIGHT;
+
   const [selectedIndex, setSelectedIndex] = useState(0);
   const onClickItem = (event) => {
     setSelectedIndex(Number(event.target.dataset.index));
   };
-
-  const width = WIDTH;
-  const height = HEIGHT;
   const itemWidth = width / items.length;
   return (
     <div
