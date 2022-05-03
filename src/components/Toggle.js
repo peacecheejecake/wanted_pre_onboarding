@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 
 const WIDTH = 400
 const HEIGHT = 38
@@ -55,14 +55,6 @@ export default function Toggle({ items }) {
 }
 
 export function Item({ isSelected, index, text, onClick }) {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.dataset.index = index;
-    }
-  }, []);
-
   return (
     <button
       css={css`
@@ -77,7 +69,7 @@ export function Item({ isSelected, index, text, onClick }) {
         transition: color 300ms ease-in;
       `}
       onClick={onClick}
-      ref={ref}
+      data-index={index}
     >
       {text}
     </button>
