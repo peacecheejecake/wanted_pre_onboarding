@@ -3,7 +3,7 @@
 import { css } from '@emotion/react';
 import SliderCircle from './SliderCircle';
 
-export default function SliderDraggable({ quartileValues, color, maxValue, onClick, children }) {
+export default function SliderDraggable({ quartileValues, color, maxValue, onClick, children, currentValue }) {
   return (
     <div
       css={css`
@@ -14,6 +14,9 @@ export default function SliderDraggable({ quartileValues, color, maxValue, onCli
         overflow: hidden;
       `}
       onClick={onClick}
+      role='slider'
+      tabIndex={-1}
+      aria-valuenow={currentValue}
     >
       <div
         css={css`

@@ -138,12 +138,19 @@ function SliderLower({ currentValue, setCurrentValue }) {
           }}
           onClick={onClickCurrentCircle}
         />
-        <SliderDraggable quartileValues={quartileValues} color='#e9ecef' maxValue={100} onClick={onClickSlider} />
+        <SliderDraggable
+          quartileValues={quartileValues}
+          color='#e9ecef'
+          maxValue={100}
+          onClick={onClickSlider}
+          currentValue={currentValue}
+        />
         <SliderDraggable
           quartileValues={quartileValues}
           color='#7048e8'
           maxValue={currentValue}
           onClick={onClickSlider}
+          currentValue={currentValue}
         />
         <div
           css={css`

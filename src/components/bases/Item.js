@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { css } from "@emotion/react";
+import { css } from '@emotion/react';
 
 export default function Item({ isSelected, index, text, onClick }) {
   return (
@@ -9,7 +9,7 @@ export default function Item({ isSelected, index, text, onClick }) {
         all: unset;
         width: 100%;
         margin: auto 0;
-        color: ${isSelected ? "#212529" : "#adb5bd"};
+        color: ${isSelected ? '#212529' : '#adb5bd'};
         font-weight: 700;
         text-align: center;
         cursor: pointer;
@@ -18,6 +18,7 @@ export default function Item({ isSelected, index, text, onClick }) {
       `}
       onClick={onClick}
       data-index={index}
+      type='button'
     >
       {text}
     </button>

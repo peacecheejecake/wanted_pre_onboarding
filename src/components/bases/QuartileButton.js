@@ -28,6 +28,7 @@ export default function QuartileButton({ index, quartileValue, setCurrentValue, 
         cursor: pointer;
       `}
       onClick={onClickButton}
+      type='button'
     >
       {quartileValue}%
     </button>
