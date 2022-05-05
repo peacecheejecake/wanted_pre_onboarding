@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
 
-import { css } from "@emotion/react";
-import { useEffect, useRef, useState } from "react";
-import TextBoxWithIcon from "./bases/TextboxWithIcon";
-import { ReactComponent as DropdownArrowSVG } from "../assets/drop_down_24dp.svg";
-import { ReactComponent as SearchSVG } from "../assets/search.svg";
+import { css } from '@emotion/react';
+import { useEffect, useRef, useState } from 'react';
+import TextBoxWithIcon from './bases/TextboxWithIcon';
+import { ReactComponent as DropdownArrowSVG } from '../assets/drop_down_24dp.svg';
+import { ReactComponent as SearchSVG } from '../assets/search.svg';
 
-const TEXT_ALL = "ALL Symbols";
+const TEXT_ALL = 'ALL Symbols';
 
 export default function Dropdown({ items }) {
   const [isDropped, setIsDropped] = useState(false);
@@ -30,20 +30,14 @@ export default function Dropdown({ items }) {
       `}
     >
       <Selected item={selectedItem} onClick={dropMenu} />
-      {isDropped && (
-        <SelectMeun
-          items={items}
-          setIsDropped={setIsDropped}
-          setSelectedItem={setSelectedItem}
-        />
-      )}
+      {isDropped && <SelectMeun items={items} setIsDropped={setIsDropped} setSelectedItem={setSelectedItem} />}
     </div>
   );
 }
 
 function Selected({ item, onClick }) {
   return (
-    <TextBoxWithIcon onClick={onClick} style={{ cursor: "pointer" }}>
+    <TextBoxWithIcon onClick={onClick} style={{ cursor: 'pointer' }}>
       <span
         css={css`
           margin: auto 12px;
@@ -51,7 +45,7 @@ function Selected({ item, onClick }) {
       >
         {item}
       </span>
-      <DropdownArrowSVG fill="#212529" />
+      <DropdownArrowSVG fill='#212529' />
     </TextBoxWithIcon>
   );
 }
@@ -59,7 +53,7 @@ function Selected({ item, onClick }) {
 function SelectMeun({ items, setIsDropped, setSelectedItem }) {
   const [itemsDisplayed, setItemsDisplayed] = useState(items);
   const onChangeSearchKey = (event) => {
-    const regexp = RegExp(`^${event.target.value}.+`, "i");
+    const regexp = RegExp(`^${event.target.value}.+`, 'i');
     setItemsDisplayed(items.filter((item) => item.match(regexp)));
   };
   return (
@@ -71,11 +65,7 @@ function SelectMeun({ items, setIsDropped, setSelectedItem }) {
       `}
     >
       <SearchBar onChange={onChangeSearchKey} />
-      <MenuItems
-        items={itemsDisplayed}
-        setIsDropped={setIsDropped}
-        setSelectedItem={setSelectedItem}
-      />
+      <MenuItems items={itemsDisplayed} setIsDropped={setIsDropped} setSelectedItem={setSelectedItem} />
     </div>
   );
 }
@@ -86,8 +76,8 @@ function SearchBar({ onChange }) {
     ref.current?.focus();
   });
   return (
-    <TextBoxWithIcon iconOnLeft={true}>
-      <SearchSVG fill="#ced4da" style={{ transform: "scale(0.5)" }} />
+    <TextBoxWithIcon iconOnLeft>
+      <SearchSVG fill='#ced4da' style={{ transform: 'scale(0.5)' }} />
       <input
         css={css`
           all: unset;
@@ -95,11 +85,11 @@ function SearchBar({ onChange }) {
             color: #ced4da;
           }
         `}
-        type="text"
-        placeholder="Search Symbol"
+        type='text'
+        placeholder='Search Symbol'
         ref={ref}
         onChange={onChange}
-      ></input>
+      />
     </TextBoxWithIcon>
   );
 }
@@ -119,18 +109,9 @@ function MenuItems({ items, setIsDropped, setSelectedItem }) {
         }
       `}
     >
-      <MenuItem
-        name={TEXT_ALL}
-        setIsDropped={setIsDropped}
-        setSelectedItem={setSelectedItem}
-      />
+      <MenuItem name={TEXT_ALL} setIsDropped={setIsDropped} setSelectedItem={setSelectedItem} />
       {items.map((item, index) => (
-        <MenuItem
-          key={index}
-          name={item}
-          setIsDropped={setIsDropped}
-          setSelectedItem={setSelectedItem}
-        />
+        <MenuItem key={index} name={item} setIsDropped={setIsDropped} setSelectedItem={setSelectedItem} />
       ))}
     </div>
   );
@@ -151,6 +132,8 @@ function MenuItem({ name, setIsDropped, setSelectedItem }) {
         }
       `}
       onClick={onClickItem}
+      role='menuitem'
+      tabIndex={-1}
     >
       {name}
     </span>

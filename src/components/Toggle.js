@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 
-import { css } from "@emotion/react";
-import { useState } from "react";
-import Item from "./bases/Item";
+import { css } from '@emotion/react';
+import { useState } from 'react';
+import Item from './bases/Item';
 
-const WIDTH = 400
-const HEIGHT = 38
+const WIDTH = 400;
+const HEIGHT = 38;
 
 export default function Toggle({ items }) {
   const width = WIDTH;
@@ -30,13 +30,7 @@ export default function Toggle({ items }) {
       `}
     >
       {items.map((item, index) => (
-        <Item
-          isSelected={index === selectedIndex}
-          onClick={onClickItem}
-          text={item}
-          index={index}
-          key={index}
-        />
+        <Item isSelected={index === selectedIndex} onClick={onClickItem} text={item} index={index} key={index} />
       ))}
       <div
         css={css`

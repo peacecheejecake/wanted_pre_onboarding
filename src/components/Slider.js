@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import TextBoxWithIcon from './bases/TextboxWithIcon';
 import SliderDraggable from './bases/SliderDraggable';
 import SliderCircle from './bases/SliderCircle';
+import QuartileButton from './bases/QuartileButton';
 
 export default function Slider() {
   const [currentValue, setCurrentValue] = useState(11);
@@ -106,6 +107,9 @@ function SliderLower({ currentValue, setCurrentValue }) {
       onMouseMove={onMouseMove}
       onMouseLeave={stopDragging}
       onMouseUp={stopDragging}
+      role='slider'
+      tabIndex={-1}
+      aria-valuenow={currentValue}
     >
       <div
         css={css`
