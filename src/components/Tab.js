@@ -2,7 +2,7 @@
 
 import { css } from "@emotion/react";
 import { useState } from "react";
-import { Item } from "./Toggle";
+import Item from "./Item";
 
 const WIDTH = 450;
 const HEIGHT = 38;

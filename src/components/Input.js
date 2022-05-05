@@ -25,7 +25,7 @@ export default function Input() {
 function EmailInputSection() {
   const [isValid, setIsValid] = useState(false);
   const [showPrompt, setShowPrompt] = useState(false);
-  const [text, setText] = useState("");
+  const [email, setEmail] = useState("");
 
   const checkOnChangeInput = (event) => {
     const regex = /^[\w\d.-]+@[\w\d-]+\.\w+$/;
@@ -39,11 +39,11 @@ function EmailInputSection() {
       return toUpdate;
     });
 
-    setText(value);
+    setEmail(value);
   };
 
   const checkOnBlurInput = () => {
-    setShowPrompt(!(text === "" || isValid));
+    setShowPrompt(!(email === "" || isValid));
   };
 
   return (

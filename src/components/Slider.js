@@ -76,7 +76,6 @@ function SliderLower({ currentValue, setCurrentValue }) {
   const quartileValues = [1, 25, 50, 75, 100];
 
   const syncWithCursor = (clientX) => {
-    console.log(width, startX);
     setCurrentValue(
       Math.min(
         100,

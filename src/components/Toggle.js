@@ -2,6 +2,7 @@
 
 import { css } from "@emotion/react";
 import { useState } from "react";
+import Item from "./Item";
 
 const WIDTH = 400
 const HEIGHT = 38
@@ -51,27 +52,5 @@ export default function Toggle({ items }) {
         `}
       />
     </div>
-  );
-}
-
-export function Item({ isSelected, index, text, onClick }) {
-  return (
-    <button
-      css={css`
-        all: unset;
-        width: 100%;
-        margin: auto 0;
-        color: ${isSelected ? "#212529" : "#adb5bd"};
-        font-weight: 700;
-        text-align: center;
-        cursor: pointer;
-        z-index: 99;
-        transition: color 300ms ease-in;
-      `}
-      onClick={onClick}
-      data-index={index}
-    >
-      {text}
-    </button>
   );
 }
