@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
 
-import styled from "@emotion/styled";
-import { css } from "@emotion/react";
-import { useEffect, useRef, useState } from "react";
-import { TextBoxWithIcon } from "./Input";
+import { css } from '@emotion/react';
+import { useEffect, useRef, useState } from 'react';
+import TextBoxWithIcon from './bases/TextboxWithIcon';
+import SliderDraggable from './bases/SliderDraggable';
+import SliderCircle from './bases/SliderCircle';
 
 export default function Slider() {
   const [currentValue, setCurrentValue] = useState(11);
@@ -20,10 +21,7 @@ export default function Slider() {
       `}
     >
       <SliderUpper currentValue={currentValue} />
-      <SliderLower
-        currentValue={currentValue}
-        setCurrentValue={setCurrentValue}
-      />
+      <SliderLower currentValue={currentValue} setCurrentValue={setCurrentValue} />
     </div>
   );
 }
@@ -76,12 +74,7 @@ function SliderLower({ currentValue, setCurrentValue }) {
   const quartileValues = [1, 25, 50, 75, 100];
 
   const syncWithCursor = (clientX) => {
-    setCurrentValue(
-      Math.min(
-        100,
-        Math.max(1, Math.round(((clientX - startX) / width) * 100)),
-      ),
-    );
+    setCurrentValue(Math.min(100, Math.max(1, Math.round(((clientX - startX) / width) * 100))));
   };
 
   const onClickSlider = (event) => {
@@ -108,7 +101,7 @@ function SliderLower({ currentValue, setCurrentValue }) {
         width: 100%;
         height: 50%;
         margin-top: 14px;
-        cursor: ${isDraggingCurruntCircle ? "pointer" : "auto"};
+        cursor: ${isDraggingCurruntCircle ? 'pointer' : 'auto'};
       `}
       onMouseMove={onMouseMove}
       onMouseLeave={stopDragging}
@@ -141,15 +134,10 @@ function SliderLower({ currentValue, setCurrentValue }) {
           }}
           onClick={onClickCurrentCircle}
         />
+        <SliderDraggable quartileValues={quartileValues} color='#e9ecef' maxValue={100} onClick={onClickSlider} />
         <SliderDraggable
           quartileValues={quartileValues}
-          color="#e9ecef"
-          maxValue={100}
-          onClick={onClickSlider}
-        />
-        <SliderDraggable
-          quartileValues={quartileValues}
-          color="#7048e8"
+          color='#7048e8'
           maxValue={currentValue}
           onClick={onClickSlider}
         />
@@ -174,114 +162,5 @@ function SliderLower({ currentValue, setCurrentValue }) {
         </div>
       </div>
     </div>
-  );
-}
-
-function SliderDraggable({
-  quartileValues,
-  color,
-  maxValue,
-  onClick,
-  children,
-}) {
-  return (
-    <div
-      css={css`
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-        position: absolute;
-        overflow: hidden;
-      `}
-      onClick={onClick}
-    >
-      <div
-        css={css`
-          width: 100%;
-          height: 50%;
-          margin: 0 auto;
-          left: 0;
-          right: 0;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        `}
-      >
-        <div
-          css={css`
-            width: 100%;
-            height: 5px;
-            background-color: ${color};
-            margin: auto 0;
-            position: absolute;
-            z-index: 1;
-            left: ${-100 + maxValue}%;
-            transition: left 0 ease-in-out;
-          `}
-        />
-        {quartileValues.map((value, index) => (
-          <SliderCircle
-            css={css`
-              background-color: ${maxValue >= value ? color : "auto"};
-              transition-delay: 0;
-            `}
-            key={index}
-          />
-        ))}
-        {children}
-      </div>
-    </div>
-  );
-}
-
-const SliderCircle = styled.div`
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  position: relative;
-  top: 0;
-  bottom: 0;
-  margin: auto 0;
-  z-index: 2;
-`;
-
-function QuartileButton({
-  index,
-  quartileValue,
-  setCurrentValue,
-  numButtons,
-  isForCurrent,
-}) {
-  const dx =
-    index === 0 || index === numButtons - 1
-      ? 0
-      : (34 / numButtons) * (index - (numButtons - 1) / 2);
-  const onClickButton = () => {
-    if (isForCurrent) return;
-    setCurrentValue(quartileValue);
-  };
-  return (
-    <button
-      css={css`
-        all: unset;
-        width: 34px;
-        height: 17px;
-        border-radius: 12px;
-        background-color: #eee;
-        font-size: 0.5rem;
-        text-align: center;
-        color: #868e96;
-        position: relative;
-        left: ${dx}px;
-        &:hover {
-          background-color: #7048e8;
-          color: #e9ecef;
-        }
-        cursor: pointer;
-      `}
-      onClick={onClickButton}
-    >
-      {quartileValue}%
-    </button>
   );
 }

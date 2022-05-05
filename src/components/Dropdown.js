@@ -2,7 +2,7 @@
 
 import { css } from "@emotion/react";
 import { useEffect, useRef, useState } from "react";
-import { TextBoxWithIcon } from "./Input";
+import TextBoxWithIcon from "./bases/TextboxWithIcon";
 import { ReactComponent as DropdownArrowSVG } from "../assets/drop_down_24dp.svg";
 import { ReactComponent as SearchSVG } from "../assets/search.svg";
 

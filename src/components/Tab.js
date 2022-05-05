@@ -2,7 +2,7 @@
 
 import { css } from "@emotion/react";
 import { useState } from "react";
-import Item from "./Item";
+import Item from "./bases/Item";
 
 const WIDTH = 450;
 const HEIGHT = 38;
