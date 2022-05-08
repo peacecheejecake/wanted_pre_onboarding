@@ -111,7 +111,7 @@ function MenuItems({ items, setIsDropped, setSelectedItem }) {
     >
       <MenuItem name={TEXT_ALL} setIsDropped={setIsDropped} setSelectedItem={setSelectedItem} />
       {items.map((item, index) => (
-        <MenuItem key={index} name={item} setIsDropped={setIsDropped} setSelectedItem={setSelectedItem} />
+        <MenuItem key={`menu-item-${index}`} name={item} setIsDropped={setIsDropped} setSelectedItem={setSelectedItem} />
       ))}
     </div>
   );

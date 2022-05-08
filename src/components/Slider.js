@@ -167,7 +167,7 @@ function SliderLower({ currentValue, setCurrentValue }) {
               quartileValue={value}
               setCurrentValue={setCurrentValue}
               numButtons={quartileValues.length}
-              key={index}
+              key={`quartile-button-${index}`}
             />
           ))}
         </div>

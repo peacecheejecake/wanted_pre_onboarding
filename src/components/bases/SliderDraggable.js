@@ -48,7 +48,7 @@ export default function SliderDraggable({ quartileValues, color, maxValue, onCli
               background-color: ${maxValue >= value ? color : 'auto'};
               transition-delay: 0;
             `}
-            key={index}
+            key={`slider-circle-${index}`}
           />
         ))}
         {children}
